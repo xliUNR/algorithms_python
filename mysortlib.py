@@ -20,6 +20,24 @@ def insertion_sort(inList):
             i+=1
         r_list.insert(i, item)
     return r_list
+# In place insertion sort
+def insertion_sort_ip(inList):
+    # first item to compare
+    work_idx = 1
+    while work_idx < len(inList):
+        temp = inList[work_idx]
+        comp_idx = work_idx-1
+        while comp_idx >= 0 and temp < inList[comp_idx]:
+            comp_idx-=1
+        # shift everything right from comp_idx to tempIdx
+        shift_idx = work_idx
+        while shift_idx > comp_idx+1:
+            inList[shift_idx] = inList[shift_idx-1]
+            shift_idx-=1
+        # This should be the insertion spot
+        inList[shift_idx] = temp
+        work_idx+=1
+
 
 # Merge in place sort
 def merge_sort(inList):
@@ -68,5 +86,20 @@ def swap(inList, idx1, idx2):
     inList[idx1] = inList[idx2]
     inList[idx2] = temp
     return inList
+
+# Bubble sort
+def bubble_sort(inList):
+    sorted_idx = len(inList) - 1
+    while sorted_idx >= 0:
+        swap_idx=0
+        while swap_idx < sorted_idx:
+            if inList[swap_idx] > inList[swap_idx+1]:
+                swap(inList, swap_idx, swap_idx+1)
+            swap_idx+=1
+        sorted_idx-=1
+    return inList
+
+
+
 
 
